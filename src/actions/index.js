@@ -10,7 +10,6 @@ const fetchSidebar = () => ({
   [CALL_API]: {
     types: [ SIDEBAR_REQUEST, SIDEBAR_SUCCESS, SIDEBAR_FAILURE ],
     endpoint: 'sidebar',
-    schema: Schemas.SIDEBAR
   }
 })
 // Fetches a single user from Github API unless it is cached.
