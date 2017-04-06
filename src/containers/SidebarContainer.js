@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Row, Col, Container } from 'reactstrap';
-import { map } from 'lodash';
+import { map, get } from 'lodash';
 import moment from 'moment';
 import { loadSidebar } from '../actions'
 import './SidebarContainer.css'
@@ -20,7 +20,7 @@ class SidebarContainer extends Component {
     loadData(this.props)
   }
 
-  renderItem = (item) =>
+  renderItem = (item) => item &&
     <Row>
       <Col>
         <Row>{item.name}</Row>
@@ -47,16 +47,8 @@ class SidebarContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const {
-    sidebar
-  } = state
+const mapStateToProps = (state, ownProps) => ({ sidebar: get(state, 'sidebar.data', null) })
 
-
-  return {
-	  sidebar,
-  }
-}
 
 export default connect(mapStateToProps, {
   loadSidebar,

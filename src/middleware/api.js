@@ -16,17 +16,12 @@ const getNextPageUrl = response => {
   return nextLink.split(';')[0].slice(1, -1)
 }
 
-const API_ROOT_OLD = 'https://api.github.com/'
 const API_ROOT = 'http://localhost:3001/'
-// Fetches an API response and normalizes the result JSON according to schema.
-// This makes every API response have the same shape, regardless of how nested it was.
 
 
 const callApi = (endpoint, schema) => {
 
-	endpoint = 'sidebar';
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-  console.log("****", fullUrl);
 
   return fetch(fullUrl)
     .then(response =>
@@ -36,9 +31,7 @@ const callApi = (endpoint, schema) => {
           return Promise.reject(json)
         }
 
-        const camelizedJson = camelizeKeys(json)
-        return Object.assign({},
-          normalize(camelizedJson, schema))
+        return json;
       })
     )
 }
