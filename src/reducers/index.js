@@ -1,10 +1,13 @@
 import * as ActionTypes from '../actions'
 import merge from 'lodash/merge'
+import { get } from 'lodash';
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 
 const sidebar = (state = { sidebar: {} }, action) => {
-  return state
+  const sidebarData = get(action, 'response.entities.sidebar.undefined', null);
+  console.log(action.type,"%%$%$%$%$%",state);
+  return sidebarData;
 }
 
 // Updates error message to notify about the failed fetches.

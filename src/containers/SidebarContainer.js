@@ -16,10 +16,6 @@ class SidebarContainer extends Component {
     loadData(this.props)
   }
 
-  componentWillReceiveProps(nextProps) {
-    loadData(nextProps)
-  }
-
   renderSidebarItem(sidebarItem) {
     return JSON.stringify(sidebarItem)
   }
@@ -41,8 +37,7 @@ class SidebarContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-	console.log(JSON.stringify(state),"%%%%%%%sss%%%%");
-
+	console.log(JSON.stringify(state),"***********");
   const {
     sidebar
   } = state
