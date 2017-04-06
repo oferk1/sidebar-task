@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { Row, Col, Container } from 'reactstrap';
-import { map, get } from 'lodash';
+import { Row, Col, Container , Button} from 'reactstrap';
+import { map, get, concat } from 'lodash';
+import classNames from 'classnames';
 import moment from 'moment';
 import { loadSidebar } from '../actions'
 import './SidebarContainer.css'
@@ -15,7 +16,10 @@ class SidebarContainer extends Component {
   static propTypes = {
 	  loadSidebar: PropTypes.func.isRequired,
   }
-
+  constructor(props){
+    super(props);
+    this.state = {visibility: 'visible'}
+  }
   componentWillMount() {
     loadData(this.props)
   }
@@ -31,18 +35,21 @@ class SidebarContainer extends Component {
       </Col>
     </Row>
 
+  toggleVisibility = () => this.setState({visibility: this.state.visibility === 'hidden' ? 'visible': 'hidden'});
 
-
-  render() {
+  toggleButton = () => <Button className="toggler" onClick={this.toggleVisibility}>
+      {this.state.visibility === 'hidden' ? 'V' : 'X'}
+      </Button>
+  render(){
     const { sidebar, total } = this.props;
     if (!sidebar) {
       return <h1><i>Loading Sidebar</i></h1>
     }
-
     return (
-        <div className="sidebar">
+        <div className={classNames(['sidebar',  this.state.visibility])}>
           <div className="sidebar-title">
             Reports: {total}
+	          {this.toggleButton()}
           </div>
           <div className="sidebar-items">
           {map(sidebar, this.renderItem)}
