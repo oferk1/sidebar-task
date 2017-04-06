@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 import { map } from 'lodash';
+import moment from 'moment';
 import { loadSidebar } from '../actions'
+import './SidebarContainer.css'
 
 
 const loadData = ({ loadSidebar }) => {
@@ -18,9 +20,17 @@ class SidebarContainer extends Component {
     loadData(this.props)
   }
 
-  renderItem = (item) => <ListGroupItem>
-    {JSON.stringify(item)}
-  </ListGroupItem>
+  renderItem = (item) =>
+    <Row>
+      <Col>
+        <Row>{item.name}</Row>
+        <Row>{item.type}<i className="material-icons">place</i>{item.location}</Row>
+      </Col>
+      <Col sm="5" >
+        {moment.unix(item.updated).format("MMMM DD hh:mm A")}
+      </Col>
+    </Row>
+
 
 
   render() {
@@ -30,9 +40,9 @@ class SidebarContainer extends Component {
     }
 
     return (
-        <ListGroup>
+        <div className="sidebar">
           {map(sidebar, this.renderItem)}
-        </ListGroup>
+        </div>
     )
   }
 }
