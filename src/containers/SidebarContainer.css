@@ -5,7 +5,7 @@
   text-align: center;
 }
 .col .row{
-  max-height: 20px;
+  max-height: 18px;
   overflow: auto;
   margin-bottom: 5px;
 }
@@ -34,8 +34,9 @@
   width: 0px;
  }
 .sidebar-items{
-  height: 100vh;
+  height: 80vh;
   overflow: auto;
+  overflow-x: hidden ;
   width: 250px;
   padding-left: 20px;
 }
@@ -43,7 +44,7 @@
 .sidebar-title{
   background: #f3f3f3;
   font-size: 26px;
-  text-align: center;
+  text-align: left;
   padding: 15px;
   margin-bottom: 5px;
   width: 250px;
@@ -61,9 +62,10 @@
   position: absolute;
   border: none;
   background: none;
-  margin-left: 5px;
+  left: 200px;
 }
 
 .hidden .toggler{
   left: 0px;
+  border: none;
 }
