@@ -31,19 +31,14 @@ const callApi = (endpoint, schema) => {
   return fetch(fullUrl)
     .then(response =>
       response.json().then(json => {
-	      console.log("$$$$$$$", json[0]);
 
 	      if (!response.ok) {
           return Promise.reject(json)
         }
 
         const camelizedJson = camelizeKeys(json)
-        const nextPageUrl = getNextPageUrl(response)
-
         return Object.assign({},
-          normalize(camelizedJson, schema),
-          { nextPageUrl }
-        )
+          normalize(camelizedJson, schema))
       })
     )
 }
@@ -61,22 +56,13 @@ const callApi = (endpoint, schema) => {
 // leading to a frozen UI as it wouldn't find "someuser" in the entities.
 // That's why we're forcing lower cases down there.
 
-const userSchema = new schema.Entity('users', {}, {
-  idAttribute: user => user.login.toLowerCase()
-})
-
-const repoSchema = new schema.Entity('repos', {
-  owner: userSchema
-}, {
-  idAttribute: repo => repo.fullName.toLowerCase()
+const sidebarSchema = new schema.Entity('sidebar', {}, {
 })
 
 // Schemas for Github API responses.
 export const Schemas = {
-  USER: userSchema,
-  USER_ARRAY: [userSchema],
-  REPO: repoSchema,
-  REPO_ARRAY: [repoSchema]
+  SIDEBAR: sidebarSchema,
+	SIDEBAR_ARRAY: [sidebarSchema],
 }
 
 // Action key that carries API call info interpreted by this Redux middleware.
