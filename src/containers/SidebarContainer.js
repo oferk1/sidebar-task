@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import { map } from 'lodash';
 import { loadSidebar } from '../actions'
-import List from '../components/List'
+
 
 const loadData = ({ loadSidebar }) => {
   loadSidebar()
@@ -16,9 +18,10 @@ class SidebarContainer extends Component {
     loadData(this.props)
   }
 
-  renderSidebarItem(sidebarItem) {
-    return JSON.stringify(sidebarItem)
-  }
+  renderItem = (item) => <ListGroupItem>
+    {JSON.stringify(item)}
+  </ListGroupItem>
+
 
   render() {
     const { sidebar } = this.props;
@@ -27,17 +30,14 @@ class SidebarContainer extends Component {
     }
 
     return (
-      <div> Sidebar container {JSON.stringify(this.props)}
-        <List renderItem={this.renderSidebarItem}
-              items={sidebar.items}
-              />
-      </div>
+        <ListGroup>
+          {map(sidebar, this.renderItem)}
+        </ListGroup>
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-	console.log(JSON.stringify(state),"***********");
   const {
     sidebar
   } = state
