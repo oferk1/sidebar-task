@@ -62,7 +62,11 @@
   left: 200px;
   min-width: 20px;
 }
-.toggler{
+.sidebar .refresh{
+  left: 170px;
+  min-width: 20px;
+}
+.toggler, .refresh{
   position: absolute;
   border: none;
   background: none;

@@ -44,9 +44,11 @@ class SidebarContainer extends Component {
         <i className="glyphicon glyphicon-ok"></i>: <i className="glyphicon glyphicon-remove"></i>}
       </Button>
 
-	toggleButton1 = () => <Button className="toggler" onClick={this.toggleVisibility}>
-		{this.state.visibility === 'hidden' ? 'V' : 'X'}
-  </Button>
+	refreshButton = () => <Button
+      className="refresh"
+      onClick={() => loadData(this.props)}>
+       <i className="glyphicon glyphicon-refresh"></i>
+      </Button>
 
   isVisible = () => this.state.visibility === 'visible';
   render(){
@@ -62,7 +64,9 @@ class SidebarContainer extends Component {
         <div className={classNames(['sidebar',  this.state.visibility])}>
           <div className="sidebar-title">
             Reports: {total}
-	          {this.toggleButton()}
+	          {this.refreshButton()}
+
+            {this.toggleButton()}
           </div>
           <div className="sidebar-items">
           {map(sidebar, this.renderItem)}
