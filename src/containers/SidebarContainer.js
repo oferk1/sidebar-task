@@ -37,15 +37,28 @@ class SidebarContainer extends Component {
 
   toggleVisibility = () => this.setState({visibility: this.state.visibility === 'hidden' ? 'visible': 'hidden'});
 
-  toggleButton = () => <Button className="toggler" onClick={this.toggleVisibility}>
-      {this.state.visibility === 'hidden' ? 'V' : 'X'}
+  toggleButton = () => <Button
+      className="toggler"
+      onClick={this.toggleVisibility}>
+      {this.state.visibility === 'hidden' ?
+        <i className="glyphicon glyphicon-ok"></i>: <i className="glyphicon glyphicon-remove"></i>}
       </Button>
+
+	toggleButton1 = () => <Button className="toggler" onClick={this.toggleVisibility}>
+		{this.state.visibility === 'hidden' ? 'V' : 'X'}
+  </Button>
+
+  isVisible = () => this.state.visibility === 'visible';
   render(){
     const { sidebar, total } = this.props;
     if (!sidebar) {
       return <h1><i>Loading Sidebar</i></h1>
     }
     return (
+      <div>
+        <div className="outer-toggler">
+      {this.isVisible() ? null : this.toggleButton()}
+      </div>
         <div className={classNames(['sidebar',  this.state.visibility])}>
           <div className="sidebar-title">
             Reports: {total}
@@ -54,6 +67,7 @@ class SidebarContainer extends Component {
           <div className="sidebar-items">
           {map(sidebar, this.renderItem)}
           </div>
+        </div>
         </div>
     )
   }

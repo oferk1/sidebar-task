@@ -58,14 +58,17 @@
   margin-top:3px;
 }
 
+.sidebar .toggler{
+  left: 200px;
+  min-width: 20px;
+}
 .toggler{
   position: absolute;
   border: none;
   background: none;
-  left: 200px;
 }
 
-.hidden .toggler{
+.outer-toggler{
   left: 0px;
   border: none;
 }
