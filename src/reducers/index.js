@@ -5,7 +5,7 @@ import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 
 const sidebar = (state = { sidebar: {} }, action) => {
-  return {data: action.response };
+  return {total: get(action, 'response.length', null), data: action.response };
 }
 
 // Updates error message to notify about the failed fetches.

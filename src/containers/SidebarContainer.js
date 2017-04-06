@@ -34,13 +34,16 @@ class SidebarContainer extends Component {
 
 
   render() {
-    const { sidebar } = this.props;
+    const { sidebar, total } = this.props;
     if (!sidebar) {
       return <h1><i>Loading Sidebar</i></h1>
     }
 
     return (
         <div className="sidebar">
+          <div className="sidebar-title">
+            Reports: {total}
+          </div>
           <div className="sidebar-items">
           {map(sidebar, this.renderItem)}
           </div>
@@ -49,7 +52,10 @@ class SidebarContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({ sidebar: get(state, 'sidebar.data', null) })
+const mapStateToProps = (state, ownProps) => (
+  { sidebar: get(state, 'sidebar.data', null),
+    total:  get(state, 'sidebar.total', null)
+  })
 
 
 export default connect(mapStateToProps, {

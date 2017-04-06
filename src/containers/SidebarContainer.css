@@ -24,14 +24,25 @@
   margin-right: 25px;
 }
 .sidebar{
-  padding-left: 35px;
   font-size:10px;
 }
 .sidebar-items{
   height: 100vh;
   overflow: auto;
-  border: 1px solid;
   width: 250px;
+  padding-left: 20px;
+}
+
+.sidebar-title{
+  background: #f3f3f3;
+  font-size: 26px;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 5px;
+  width: 250px;
+  color: lightblue;
+  border-top: 1px solid lightgray;
+  font-style: italic;
 }
 
 .material-icons {
