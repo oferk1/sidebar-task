@@ -41,7 +41,9 @@ class SidebarContainer extends Component {
 
     return (
         <div className="sidebar">
+          <div className="sidebar-items">
           {map(sidebar, this.renderItem)}
+          </div>
         </div>
     )
   }

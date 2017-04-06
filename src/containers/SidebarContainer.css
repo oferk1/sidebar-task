@@ -9,11 +9,11 @@
   overflow: auto;
   margin-bottom: 5px;
 }
-.sidebar>.row {
+.sidebar-items>.row {
   border-bottom: 1px solid lightgray;
   height: 53px;
 }
-.sidebar>.row:before {
+.sidebar-items>.row:before {
   content: "";
   background: lightgray;
   border-radius: 10px;
