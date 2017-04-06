@@ -23,16 +23,15 @@ const API_ROOT = 'http://localhost:3001/'
 
 
 const callApi = (endpoint, schema) => {
-	console.log("44");
 
 	endpoint = 'sidebar';
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-  console.log("***", fullUrl);
+  console.log("****", fullUrl);
 
   return fetch(fullUrl)
     .then(response =>
       response.json().then(json => {
-	      console.log("$$$$$$$", response);
+	      console.log("$$$$$$$", json[0]);
 
 	      if (!response.ok) {
           return Promise.reject(json)
