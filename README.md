@@ -1,4 +1,3 @@
-
 # Requirements
 
 - Clone and start the mock server:
