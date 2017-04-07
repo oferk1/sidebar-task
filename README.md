@@ -1,16 +1,18 @@
-# Setup Instrctions
+
+# Requirements
 
 - Clone and start the mock server:
     - git clone https://github.com/oferk1/sidebar
     - npm install
     - npm start
     
+# Setup Instrctions
+
 - Start the project
     - npm install
+    - npm start
 
-# Requirements
-
-- `sidebar.json` - data file
+# Task Description: 
 
 # Tools to use
 
