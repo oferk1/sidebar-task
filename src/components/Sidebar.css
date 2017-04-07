@@ -30,9 +30,6 @@
   overflow: hidden;
 
 }
-.sidebar.hidden{
-  width: 0px;
- }
 .sidebar-items{
   height: 80vh;
   overflow: auto;
@@ -75,4 +72,8 @@
 .outer-toggler{
   left: 0px;
   border: none;
+}
+
+.sidebar.hidden{
+  width: 0px;
 }
