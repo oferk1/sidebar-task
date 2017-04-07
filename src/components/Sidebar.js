@@ -13,7 +13,7 @@ const loadData = ({ loadSidebar }) => {
 }
 
 const sort = ({ toggleSort, sidebar }) => {
-	toggleSort(reverse(sidebar))
+	toggleSort(sidebar)
 }
 
 class SidebarContainer extends Component {
@@ -32,7 +32,10 @@ class SidebarContainer extends Component {
     <Row>
       <Col>
         <Row>{item.name}</Row>
-        <Row>{item.type}<i className="material-icons">place</i>{item.location}</Row>
+        <Row>{item.type}
+          <i className="material-icons">place</i>
+          {item.location}
+          </Row>
       </Col>
       <Col sm="5" >
         {item.updated}
@@ -41,14 +44,21 @@ class SidebarContainer extends Component {
 
   toggleVisibility = () => this.setState({visibility: this.state.visibility === 'hidden' ? 'visible': 'hidden'});
 
-  toggleButton = () => <Button className="toggler" onClick={this.toggleVisibility}>
-      {this.state.visibility === 'hidden' ?
-        <i className="glyphicon glyphicon-ok"></i>: <i className="glyphicon glyphicon-remove"></i>}
-      </Button>
+	isVisible = () => this.state.visibility === 'visible';
 
-	refreshButton = () => <Button className="refresh" onClick={() => loadData(this.props)}>
-       <i className="glyphicon glyphicon-refresh"></i>
-      </Button>
+  toggleButton = () => <Button
+    className="toggler"
+    onClick={this.toggleVisibility}>
+    {this.state.visibility === 'hidden' ?
+      <i className="glyphicon glyphicon-ok"></i>:
+      <i className="glyphicon glyphicon-remove"></i>}
+    </Button>
+
+	refreshButton = () => <Button
+      className="refresh"
+      onClick={() => loadData(this.props)}>
+     <i className="glyphicon glyphicon-refresh"></i>
+    </Button>
 
   sortButton = () => <Button
       className="toggle-sort"
@@ -56,25 +66,23 @@ class SidebarContainer extends Component {
        <i className="glyphicon glyphicon-sort"></i>
       </Button>
 
-  isVisible = () => this.state.visibility === 'visible';
   render(){
     const { sidebar, total } = this.props;
-    if (!sidebar) {
-      return <h1><i>Loading Sidebar</i></h1>
-    }
+    if (!sidebar) return <h1><i>Loading Sidebar</i></h1>;
+    const externalToggle = this.isVisible() ? null : this.toggleButton();
+
     return (
       <div>
-        <div className="outer-toggler">
-      {this.isVisible() ? null : this.toggleButton()}
-      </div>
+        <div className="outer-toggler">{externalToggle}</div>
         <div className={classNames(['sidebar',  this.state.visibility])}>
           <div className="sidebar-title">
             Reports: {total}
-	          {this.refreshButton()}{this.toggleButton()}
+	          {this.refreshButton()}
+	          {this.toggleButton()}
           </div>
 	        {this.sortButton()}
           <div className="sidebar-items">
-          {map(sidebar, this.renderItem)}
+            {map(sidebar, this.renderItem)}
           </div>
         </div>
         </div>

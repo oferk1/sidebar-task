@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actions'
 import merge from 'lodash/merge'
-import { get, reverse, reduce, set, forEach } from 'lodash';
+import { get, reduce, set, forEach } from 'lodash';
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 import moment from 'moment';

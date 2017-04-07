@@ -1,3 +1,4 @@
+import { reverse } from 'lodash';
 import { CALL_API } from '../middleware/api'
 
 export const SIDEBAR_REQUEST = 'SIDEBAR_REQUEST'
@@ -26,6 +27,6 @@ export const TOGGLE_SORT = 'SIDEBAR_SUCCESS'
 
 // Resets the currently visible error message.
 export const toggleSort = (list) => ({
-    response: list,
+    response: reverse(list),
     type: TOGGLE_SORT
 })
