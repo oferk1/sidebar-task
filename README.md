@@ -20,7 +20,7 @@
 
 # Expected Result
 
-![expected result](../../../../Downloads/Blazemeter%20exercise%20(1)/sidebar.png "Expected Result")
+![expected result](./sidebar.png "Expected Result")
 
 Result should be a web page (html) that can include any style or script (using native or script loader)
 
