@@ -5,11 +5,12 @@ import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 import moment from 'moment';
 
+const formatUnixTS = unixTS => moment.unix(unixTS).format("MMMM DD hh:mm A")
+
 const sidebar = (state = { sidebar: {} }, action) => {
   if (action.type !== 'SIDEBAR_SUCCESS') return state;
-  forEach(action.response, item => set(item, 'updated',
-    moment.unix(item.updated).format("MMMM DD hh:mm A")));
-	return {total: get(action, 'response.length', null), data: action.response };
+  forEach(action.response, item => set(item, 'updated', formatUnixTS(item.updated)));
+	return {total: action.response.length, data: action.response };
 }
 
 
