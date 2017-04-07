@@ -1,15 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Row, Col, Container , Button} from 'reactstrap';
-import { map, get, concat } from 'lodash';
+import { map, get, concat, reverse } from 'lodash';
 import classNames from 'classnames';
 import moment from 'moment';
-import { loadSidebar } from '../actions'
+import { loadSidebar, toggleSort } from '../actions'
 import './SidebarContainer.css'
 
 
 const loadData = ({ loadSidebar }) => {
   loadSidebar()
+}
+
+const sort = ({ toggleSort, sidebar }) => {
+	toggleSort(reverse(sidebar))
 }
 
 class SidebarContainer extends Component {
@@ -50,6 +54,12 @@ class SidebarContainer extends Component {
        <i className="glyphicon glyphicon-refresh"></i>
       </Button>
 
+  sortButton = () => <Button
+      className="toggle-sort"
+      onClick={() => sort(this.props)}>
+       <i className="glyphicon glyphicon-sort"></i>
+      </Button>
+
   isVisible = () => this.state.visibility === 'visible';
   render(){
     const { sidebar, total } = this.props;
@@ -68,6 +78,7 @@ class SidebarContainer extends Component {
 
             {this.toggleButton()}
           </div>
+	        {this.sortButton()}
           <div className="sidebar-items">
           {map(sidebar, this.renderItem)}
           </div>
@@ -85,4 +96,5 @@ const mapStateToProps = (state, ownProps) => (
 
 export default connect(mapStateToProps, {
   loadSidebar,
+  toggleSort,
 })(SidebarContainer)

@@ -25,3 +25,11 @@ export const RESET_ERROR_MESSAGE = 'RESET_ERROR_MESSAGE'
 export const resetErrorMessage = () => ({
     type: RESET_ERROR_MESSAGE
 })
+
+export const TOGGLE_SORT = 'SIDEBAR_SUCCESS'
+
+// Resets the currently visible error message.
+export const toggleSort = (list) => ({
+    response: list,
+    type: TOGGLE_SORT
+})
