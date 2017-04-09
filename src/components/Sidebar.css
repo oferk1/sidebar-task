@@ -3,6 +3,8 @@
 }
 .row .col:last-child{
   text-align: center;
+    float:right;
+    top: 12px;
 }
 .col .row{
   max-height: 18px;
@@ -76,4 +78,7 @@
 
 .sidebar.hidden{
   width: 0px;
+}
+.outer-toggler button{
+  background: lightgray;
 }

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Row, Col , Button} from 'reactstrap';
 import { map, get } from 'lodash';
@@ -16,9 +16,6 @@ const sort = ({ toggleSort, sidebar }) => {
 }
 
 class Sidebar extends Component {
-  static propTypes = {
-	  loadSidebar: PropTypes.func.isRequired,
-  }
   constructor(props){
     super(props);
     this.state = {visibility: 'visible'}
@@ -28,7 +25,7 @@ class Sidebar extends Component {
   }
 
   renderItem = (item) => item &&
-    <Row>
+    <Row key={item.key}>
       <Col>
         <Row>{item.name}</Row>
         <Row>{item.type}

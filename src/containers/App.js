@@ -1,18 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
 import { resetErrorMessage } from '../actions'
 import SidebarContainer from '../components/Sidebar'
 
 
 class App extends Component {
-  static propTypes = {
-    // Injected by React Redux
-    errorMessage: PropTypes.string,
-    resetErrorMessage: PropTypes.func.isRequired,
-    // Injected by React Router
-    children: PropTypes.node
-  }
 
   handleDismissClick = e => {
     this.props.resetErrorMessage()

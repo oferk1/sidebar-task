@@ -1,6 +1,5 @@
 import * as ActionTypes from '../actions'
-import merge from 'lodash/merge'
-import { get, reduce, set, forEach } from 'lodash';
+import { reduce, set } from 'lodash';
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 import moment from 'moment';
@@ -9,7 +8,12 @@ const formatUnixTS = unixTS => moment.unix(unixTS).format("MMMM DD hh:mm A")
 
 const sidebar = (state = { data: {} }, action) => {
   if (action.type !== 'SIDEBAR_SUCCESS') return state;
-  forEach(action.response, item => set(item, 'updated', formatUnixTS(item.updated)));
+  reduce(action.response, (result, item) => {
+	  set(item, 'updated', formatUnixTS(item.updated))
+	  set(item, 'key', result.length);
+	  result.push(item);
+	  return result;
+  }, []);
 	return {total: action.response.length, data: action.response };
 }
 
