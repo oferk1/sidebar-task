@@ -16,7 +16,7 @@ const sort = ({ toggleSort, sidebar }) => {
 	toggleSort(sidebar)
 }
 
-class SidebarContainer extends Component {
+class Sidebar extends Component {
   static propTypes = {
 	  loadSidebar: PropTypes.func.isRequired,
   }
@@ -99,4 +99,4 @@ const mapStateToProps = (state, ownProps) => (
 export default connect(mapStateToProps, {
   loadSidebar,
   toggleSort,
-})(SidebarContainer)
+})(Sidebar)
