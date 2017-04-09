@@ -1,7 +1,7 @@
 # Setup Instructions
 
 - In your project directory, clone and start the mock server:
-    - git clone https://github.com/oferk1/sidebar
+    - git clone https://github.com/oferk1/sidebar-mock-data-server
     - cd sidebar
     - npm install
     - npm start
