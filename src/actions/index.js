@@ -12,7 +12,6 @@ const fetchSidebar = () => ({
   }
 })
 export const loadSidebar = () => (dispatch, getState) => {
-  const sidebar = getState().sidebar;
   return dispatch(fetchSidebar())
 }
 

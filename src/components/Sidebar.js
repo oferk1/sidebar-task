@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { Row, Col, Container , Button} from 'reactstrap';
-import { map, get, concat, reverse } from 'lodash';
+import { Row, Col , Button} from 'reactstrap';
+import { map, get } from 'lodash';
 import classNames from 'classnames';
-import moment from 'moment';
 import { loadSidebar, toggleSort } from '../actions'
 import './Sidebar.css'
 
