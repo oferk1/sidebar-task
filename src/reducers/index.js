@@ -7,7 +7,7 @@ import moment from 'moment';
 
 const formatUnixTS = unixTS => moment.unix(unixTS).format("MMMM DD hh:mm A")
 
-const sidebar = (state = { sidebar: {} }, action) => {
+const sidebar = (state = { data: {} }, action) => {
   if (action.type !== 'SIDEBAR_SUCCESS') return state;
   forEach(action.response, item => set(item, 'updated', formatUnixTS(item.updated)));
 	return {total: action.response.length, data: action.response };
